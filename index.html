@@ -52,6 +52,16 @@
             border: 4px solid white;
             background: white;
             padding: 5px;
+            object-fit: contain;
+        }
+        
+        .logo-small img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #1b5e20;
+            object-fit: contain;
+            background: white;
         }
         
         h1 {
@@ -228,13 +238,6 @@
             display: flex;
             align-items: center;
             gap: 15px;
-        }
-        
-        .logo-small img {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            border: 2px solid #1b5e20;
         }
         
         .timer-container {
@@ -571,6 +574,16 @@
             z-index: -1;
             opacity: 0.1;
         }
+        
+        /* Loading untuk logo */
+        .logo-loading {
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 12px;
+        }
     </style>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -582,7 +595,7 @@
     <div id="tampilan-awal" class="container">
         <div class="header">
             <div class="logo-container">
-                <img id="logo-sekolah" src="https://via.placeholder.com/120x120/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
+                <img id="logo-sekolah" src="logo.png" alt="Logo Sekolah" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiMxYjVlMjAiLz4KPHRleHQgeD0iNjAiIHk9IjYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+U01BIDU8L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSI4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VE5IIFBVVElIPC90ZXh0Pgo8L3N2Zz4K';">
             </div>
             <h1>SMA NEGERI 5 TANAH PUTIH</h1>
             <h2>KABUPATEN ROKAN HILIR</h2>
@@ -649,7 +662,7 @@
         <div class="header-ujian">
             <div class="info-siswa">
                 <div class="logo-small">
-                    <img src="https://via.placeholder.com/50x50/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
+                    <img src="logo.png" alt="Logo Sekolah" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiByeD0iMjUiIGZpbGw9IiMxYjVlMjAiLz4KPHRleHQgeD0iMjUiIHk9IjI1IiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iOCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGR5PSIuM2VtIj5TTUEgNTwvdGV4dD4KPC9zdmc+';">
                 </div>
                 <div>
                     <h4 id="nama-tampilan"></h4>
@@ -715,7 +728,7 @@
     <div id="tampilan-hasil" class="container" style="display:none;">
         <div class="header">
             <div class="logo-container">
-                <img src="https://via.placeholder.com/120x120/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
+                <img src="logo.png" alt="Logo Sekolah" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjEyMCIgdmlld0JveD0iMCAwIDEyMCAxMjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iMTIwIiByeD0iNjAiIGZpbGw9IiMxYjVlMjAiLz4KPHRleHQgeD0iNjAiIHk9IjYwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+U01BIDU8L3RleHQ+Cjx0ZXh0IHg9IjYwIiB5PSI4MCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+VE5IIFBVVElIPC90ZXh0Pgo8L3N2Zz4K';">
             </div>
             <h1>SMA NEGERI 5 TANAH PUTIH</h1>
             <h2>KABUPATEN ROKAN HILIR</h2>
@@ -1381,7 +1394,7 @@
             const nilai = Math.round((jawabanBenar / soalData.length) * 100);
             
             tampilkanHasil(nilai, jawabanBenar, waktuPengerjaanFormat, jawabanSiswaArray);
-            kirimKeGoogleSheets(nilai, jawabanBenar, jawabanSalah, waktuPengerjaanDetik, jawabanSiswaArray);
+            kirimKeGoogleSheets(nilai, jawabanBenar, jawabanSalah, waktuPengerjaanDetik, jawabanSisaArray);
         }
 
         // Tampilkan hasil
@@ -1542,6 +1555,18 @@
 
         // Inisialisasi
         updateSoalTerjawab();
+        
+        // Preload logo untuk memastikan tidak ada masalah
+        window.addEventListener('load', function() {
+            const img = new Image();
+            img.src = 'logo.png';
+            img.onload = function() {
+                console.log('Logo berhasil dimuat');
+            };
+            img.onerror = function() {
+                console.log('Logo tidak ditemukan, menggunakan fallback');
+            };
+        });
     </script>
 </body>
 </html>
