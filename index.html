@@ -1,0 +1,1532 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULANGAN HARIAN SEJARAH - HINDU-BUDDHA DAN MATARAM KUNO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1b5e20 0%, #388e3c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 900px;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(to right, #1b5e20, #388e3c);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .logo-container {
+            margin-bottom: 15px;
+        }
+        
+        .logo-container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid white;
+            background: white;
+            padding: 5px;
+        }
+        
+        h1 {
+            font-size: 24px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        .judul-ulangan {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .judul-ulangan h3 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .info-box {
+            background: #fff3e0;
+            border-left: 5px solid #ff9800;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        
+        .info-box h4 {
+            color: #e65100;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-box ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .info-box li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .info-box li i {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            color: #d32f2f;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #1b5e20;
+            font-size: 16px;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #c8e6c9;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .form-group input:focus, .form-group select:focus {
+            border-color: #388e3c;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(56, 142, 60, 0.2);
+        }
+        
+        .checkbox-group {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, #1b5e20, #388e3c);
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-weight: 600;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, #2e7d32, #4caf50);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-secondary {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-danger {
+            background: linear-gradient(to right, #c62828, #d32f2f);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .catatan {
+            margin-top: 20px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Tampilan Ujian */
+        .header-ujian {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            background: #f5f5f5;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .info-siswa {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-small img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid #1b5e20;
+        }
+        
+        .timer-container {
+            text-align: center;
+        }
+        
+        .timer {
+            background: #1b5e20;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 28px;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .peringatan-waktu {
+            margin-top: 5px;
+            color: #d32f2f;
+            font-size: 13px;
+            font-weight: 500;
+        }
+        
+        .indikator-keamanan .status-box {
+            background: #388e3c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .peringatan {
+            background: #d32f2f;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+        
+        .soal-container {
+            padding: 25px;
+            min-height: 500px;
+        }
+        
+        .soal-header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .soal-header h3 {
+            color: #1b5e20;
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+        
+        .info-soal {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .info-soal p {
+            background: #e8f5e9;
+            padding: 8px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .soal-item {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #4caf50;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .soal-item h4 {
+            font-size: 17px;
+            margin-bottom: 15px;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .pilihan {
+            margin-bottom: 10px;
+        }
+        
+        .pilihan label {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 15px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: 2px solid transparent;
+        }
+        
+        .pilihan label:hover {
+            background: #e8f5e9;
+        }
+        
+        .pilihan label.terpilih {
+            background: #e8f5e9;
+            border-color: #4caf50;
+        }
+        
+        .label-text {
+            margin-left: 10px;
+            line-height: 1.4;
+        }
+        
+        .nav-soal {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+        
+        .nav-soal-indikator {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 20px 0;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .btn-nomor-soal {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid #c8e6c9;
+            background: white;
+            color: #333;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .btn-nomor-soal:hover {
+            background: #e8f5e9;
+        }
+        
+        .footer-ujian {
+            background: #ffebee;
+            padding: 15px;
+            text-align: center;
+            color: #c62828;
+            font-size: 14px;
+            border-top: 2px solid #ffcdd2;
+        }
+        
+        /* Tampilan Hasil */
+        .hasil-container {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .hasil-container h3 {
+            color: #1b5e20;
+            margin-bottom: 30px;
+            font-size: 26px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+        
+        .info-hasil {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card-hasil {
+            background: #f9f9f9;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: left;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .card-hasil h4 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .card-hasil p {
+            margin-bottom: 8px;
+            font-size: 15px;
+        }
+        
+        .nilai-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 0;
+        }
+        
+        .nilai-angka {
+            font-size: 70px;
+            font-weight: 800;
+            color: #1b5e20;
+            margin-bottom: 10px;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            overflow: hidden;
+        }
+        
+        .modal-header {
+            background: linear-gradient(to right, #d32f2f, #c62828);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .modal-body {
+            padding: 30px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+        
+        .modal-footer {
+            padding: 20px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+        }
+        
+        /* Responsif */
+        @media (max-width: 768px) {
+            .header-ujian {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-soal {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
+        
+        /* Print Styles */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            
+            #tampilan-hasil, #tampilan-hasil * {
+                visibility: visible;
+            }
+            
+            #tampilan-hasil {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .action-buttons {
+                display: none;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+        }
+        
+        /* Watermark untuk screenshot */
+        .watermark {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Watermark untuk screenshot -->
+    <div id="watermark" class="watermark"></div>
+    
+    <!-- Tampilan Awal -->
+    <div id="tampilan-awal" class="container">
+        <div class="header">
+            <div class="logo-container">
+                <img id="logo-sekolah" src="logo.png" alt="Logo Sekolah">
+            </div>
+            <h1>SMA NEGERI 5 TANAH PUTIH</h1>
+            <h2>KABUPATEN ROKAN HILIR</h2>
+            <div class="judul-ulangan">
+                <h3><i class="fas fa-book-open"></i> ULANGAN HARIAN SEJARAH</h3>
+                <p>Materi: Hindu-Buddha dan Mataram Kuno (15 Soal Pilihan Ganda)</p>
+            </div>
+        </div>
+        
+        <div class="form-container">
+            <div class="info-box">
+                <h4><i class="fas fa-exclamation-circle"></i> PERHATIAN!</h4>
+                <p>Sebelum memulai ulangan, harap perhatikan hal berikut:</p>
+                <ul>
+                    <li><i class="fas fa-ban"></i> DILARANG mencontek atau membuka aplikasi lain</li>
+                    <li><i class="fas fa-ban"></i> DILARANG menyalin (copy-paste) soal atau jawaban</li>
+                    <li><i class="fas fa-ban"></i> DILARANG screenshot atau merekam layar</li>
+                    <li><i class="fas fa-clock"></i> Waktu pengerjaan: 15 menit 00 detik</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Kecurangan akan mengakhiri ujian otomatis tanpa kompensasi</li>
+                </ul>
+            </div>
+            
+            <form id="form-data-diri">
+                <div class="form-group">
+                    <label for="nama"><i class="fas fa-user"></i> NAMA SISWA:</label>
+                    <input type="text" id="nama" required placeholder="Masukkan nama lengkap">
+                </div>
+                
+                <div class="form-group">
+                    <label for="kelas"><i class="fas fa-users"></i> KELAS:</label>
+                    <select id="kelas" required>
+                        <option value="">Pilih Kelas</option>
+                        <option value="10 Satu">10 Satu</option>
+                        <option value="10 Dua">10 Dua</option>
+                        <option value="10 Tiga">10 Tiga</option>
+                        <option value="10 Empat">10 Empat</option>
+                        <option value="11 Satu">11 Satu</option>
+                        <option value="11 Dua">11 Dua</option>
+                        <option value="11 Tiga">11 Tiga</option>
+                        <option value="12 Satu">12 Satu</option>
+                        <option value="12 Dua">12 Dua</option>
+                        <option value="12 Tiga">12 Tiga</option>
+                    </select>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="setuju" required>
+                    <label for="setuju">Saya menyatakan akan mengerjakan ulangan dengan jujur tanpa mencontek</label>
+                </div>
+                
+                <button type="submit" id="mulai-ujian" class="btn-primary">
+                    <i class="fas fa-play-circle"></i> MULAI ULANGAN
+                </button>
+            </form>
+            
+            <div class="catatan">
+                <p><i class="fas fa-lock"></i> Sistem keamanan aktif: Monitoring perilaku ujian</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Tampilan Ujian -->
+    <div id="tampilan-ujian" class="container" style="display:none;">
+        <div class="header-ujian">
+            <div class="info-siswa">
+                <div class="logo-small">
+                    <img src="logo.png" alt="Logo Sekolah">
+                </div>
+                <div>
+                    <h4 id="nama-tampilan"></h4>
+                    <p id="kelas-tampilan"></p>
+                </div>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">15:00</span>
+                </div>
+                <div class="peringatan-waktu">
+                    <p><i class="fas fa-exclamation-triangle"></i> Waktu tersisa</p>
+                </div>
+            </div>
+            
+            <div class="indikator-keamanan">
+                <div class="status-box" id="status-jujur">
+                    <i class="fas fa-user-check"></i>
+                    <span>Status: Jujur</span>
+                </div>
+                <div class="peringatan" id="peringatan-curang" style="display:none;">
+                    <i class="fas fa-user-slash"></i>
+                    <span>KECURANGAN TERDETEKSI!</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="soal-container">
+            <div class="soal-header">
+                <h3><i class="fas fa-history"></i> ULANGAN HARIAN SEJARAH</h3>
+                <p>Materi: Hindu-Buddha dan Mataram Kuno (15 Soal Pilihan Ganda)</p>
+                <div class="info-soal">
+                    <p><i class="fas fa-list-ol"></i> Soal: <span id="jumlah-soal">15</span></p>
+                    <p><i class="fas fa-question-circle"></i> Terjawab: <span id="terjawab">0</span></p>
+                </div>
+            </div>
+            
+            <div id="daftar-soal">
+                <!-- Soal akan dimuat secara dinamis -->
+            </div>
+            
+            <div class="nav-soal">
+                <button id="sebelumnya" class="btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Sebelumnya
+                </button>
+                <button id="selanjutnya" class="btn-secondary">
+                    Selanjutnya <i class="fas fa-arrow-right"></i>
+                </button>
+                <button id="kirim-jawaban" class="btn-danger">
+                    <i class="fas fa-paper-plane"></i> Kirim Jawaban
+                </button>
+            </div>
+        </div>
+        
+        <div class="footer-ujian">
+            <p><i class="fas fa-shield-alt"></i> Sistem keamanan aktif - Kecurangan akan mengakhiri ujian secara otomatis</p>
+        </div>
+    </div>
+    
+    <!-- Tampilan Hasil -->
+    <div id="tampilan-hasil" class="container" style="display:none;">
+        <div class="header">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo Sekolah">
+            </div>
+            <h1>SMA NEGERI 5 TANAH PUTIH</h1>
+            <h2>KABUPATEN ROKAN HILIR</h2>
+        </div>
+        
+        <div class="hasil-container">
+            <h3><i class="fas fa-clipboard-check"></i> HASIL ULANGAN HARIAN SEJARAH</h3>
+            
+            <div class="info-hasil">
+                <div class="card-hasil">
+                    <h4>Data Siswa</h4>
+                    <p><strong>Nama:</strong> <span id="hasil-nama"></span></p>
+                    <p><strong>Kelas:</strong> <span id="hasil-kelas"></span></p>
+                    <p><strong>Waktu:</strong> <span id="hasil-waktu"></span></p>
+                    <p><strong>Status:</strong> <span id="hasil-status"></span></p>
+                    <p><strong>Tanggal:</strong> <span id="hasil-tanggal"></span></p>
+                </div>
+                
+                <div class="card-hasil">
+                    <h4>Nilai Akhir</h4>
+                    <div class="nilai-container">
+                        <div class="nilai-angka" id="nilai-angka">0</div>
+                        <p>Skala: 0-100</p>
+                    </div>
+                </div>
+                
+                <div class="card-hasil">
+                    <h4>Laporan Sistem</h4>
+                    <div id="laporan-keamanan">
+                        <p><i class="fas fa-check-circle" style="color:#388e3c"></i> Tidak terdeteksi kecurangan</p>
+                    </div>
+                    <p style="font-size: 13px; color: #666; margin-top: 10px;">
+                        <i class="fas fa-info-circle"></i> Hasil telah dikirim ke guru
+                    </p>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="cetak-hasil" class="btn-secondary">
+                    <i class="fas fa-print"></i> CETAK HASIL
+                </button>
+                <button id="tutup-hasil" class="btn-primary">
+                    <i class="fas fa-check-circle"></i> SELESAI
+                </button>
+            </div>
+            
+            <div style="margin-top: 25px; padding-top: 20px; border-top: 1px solid #eee;">
+                <p style="color: #666; font-size: 14px;">
+                    <i class="fas fa-chalkboard-teacher"></i> 
+                    <strong>Pesan Guru:</strong> Terima kasih telah mengerjakan dengan jujur. Hasil ini akan dicatat sebagai nilai ulangan harian.
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal Peringatan -->
+    <div id="modal-peringatan" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> PERINGATAN SISTEM</h3>
+            </div>
+            <div class="modal-body">
+                <p id="pesan-peringatan"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="tutup-modal" class="btn-danger">MENGERTI</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data soal dan kunci jawaban (15 soal: Teori Hindu-Buddha + Mataram Kuno)
+        const soalData = [
+            {
+                soal: "Teori masuknya Hindu-Buddha ke Indonesia yang menyatakan bahwa peran aktif dalam penyebaran agama dan kebudayaan dilakukan oleh kaum brahmana (pendeta) atas undangan penguasa lokal dinamakan teori...",
+                pilihan: ["Waisya", "Ksatria", "Brahmana", "Arus Balik", "Sudra"],
+                kunci: 2 // c) Brahmana
+            },
+            {
+                soal: "Salah satu bukti kuat yang mendukung teori Brahmana adalah...",
+                pilihan: [
+                    "Banyaknya prasasti berbahasa Sanskerta dan huruf Pallawa.",
+                    "Adanya penemuan arca-arca dewa-dewi India.",
+                    "Penggunaan sistem kasta dalam masyarakat.",
+                    "Ditemukannya candi-candi bercorak Hindu.",
+                    "Munculnya kerajaan-kerajaan bercorak Hindu-Buddha."
+                ],
+                kunci: 0 // a) Banyaknya prasasti berbahasa Sanskerta dan huruf Pallawa.
+            },
+            {
+                soal: "Teori 'Arus Balik' yang dikemukakan oleh F.D.K. Bosch menekankan pada peran...",
+                pilihan: [
+                    "Pedagang India yang menetap dan menikah dengan penduduk lokal.",
+                    "Bangsa Indonesia sendiri yang aktif belajar ke India dan kembali menyebarkan ilmunya.",
+                    "Kaum ksatria India yang kalah perang lalu mengungsi ke Nusantara.",
+                    "Para brahmana yang diundang secara khusus untuk menobatkan raja.",
+                    "Misionaris agama Buddha dari India yang menyebarkan ajaran."
+                ],
+                kunci: 1 // b) Bangsa Indonesia sendiri yang aktif belajar ke India dan kembali menyebarkan ilmunya.
+            },
+            {
+                soal: "Salah satu perubahan signifikan dalam kehidupan politik masyarakat Indonesia setelah masuknya pengaruh Hindu-Buddha adalah...",
+                pilihan: [
+                    "Sistem pemerintahan kesukuan digantikan oleh sistem kerajaan (monarki).",
+                    "Munculnya demokrasi langsung di tingkat desa.",
+                    "Kekuasaan dipegang sepenuhnya oleh dewan perang.",
+                    "Pemimpin dipilih berdasarkan kekayaan dan kepemilikan tanah.",
+                    "Sistem pemerintahan menjadi teokrasi yang dipimpin oleh pendeta."
+                ],
+                kunci: 0 // a) Sistem pemerintahan kesukuan digantikan oleh sistem kerajaan (monarki).
+            },
+            {
+                soal: "Dalam bidang ekonomi, masuknya pengaruh Hindu-Buddha memperkuat kegiatan...",
+                pilihan: [
+                    "Pertanian subsisten di pedalaman.",
+                    "Perburuan dan meramu.",
+                    "Pelayaran dan perdagangan antarpulau serta internasional.",
+                    "Industri manufaktur berskala besar.",
+                    "Ekonomi barter dalam skala kecil."
+                ],
+                kunci: 2 // c) Pelayaran dan perdagangan antarpulau serta internasional.
+            },
+            {
+                soal: "Walaupun pengaruh Hindu-Buddha kuat, unsur-unsur kebudayaan asli Indonesia (lokal) tetap bertahan dan berakulturasi. Hal ini dapat dilihat dari...",
+                pilihan: [
+                    "Bentuk candi seperti Prambanan dan Borobudur yang memiliki unsur punden berundak.",
+                    "Penggunaan bahasa Sanskerta secara penuh menggantikan bahasa lokal.",
+                    "Penghapusan sistem kepercayaan animisme dan dinamisme.",
+                    "Raja dianggap sebagai titisan dewa secara mutlak tanpa syarat.",
+                    "Seluruh sistem hukum adat diganti dengan kitab hukum Manu."
+                ],
+                kunci: 0 // a) Bentuk candi seperti Prambanan dan Borobudur yang memiliki unsur punden berundak.
+            },
+            {
+                soal: "Sistem sosial yang dibawa agama Hindu adalah sistem kasta (caturwarna). Namun dalam penerapannya di Indonesia, sistem kasta tidak seketat di India karena...",
+                pilihan: [
+                    "Pengaruh Buddha yang menentang sistem kasta lebih kuat.",
+                    "Masyarakat Indonesia sudah memiliki stratifikasi sosial sendiri yang berakulturasi.",
+                    "Kaum brahmana dari India melonggarkan aturannya.",
+                    "Semua kasta memiliki hak yang sama dalam politik.",
+                    "Sistem kasta hanya berlaku untuk kaum imigran India."
+                ],
+                kunci: 1 // b) Masyarakat Indonesia sudah memiliki stratifikasi sosial sendiri yang berakulturasi.
+            },
+            {
+                soal: "Kerajaan Mataram Kuno yang berpusat di Jawa Tengah diperintah oleh dua wangsa (dinasti) yang berbeda agama, yaitu...",
+                pilihan: [
+                    "Wangsa Sanjaya (Hindu) dan Wangsa Sailendra (Buddha)",
+                    "Wangsa Girindra (Hindu) dan Wangsa Rajasa (Buddha)",
+                    "Wangsa Isyana (Hindu) dan Wangsa Warmadewa (Buddha)",
+                    "Wangsa Syailendra (Hindu) dan Wangsa Sanjaya (Buddha)",
+                    "Wangsa Mauli (Hindu) dan Wangsa Sailendra (Buddha)"
+                ],
+                kunci: 0 // a) Wangsa Sanjaya (Hindu) dan Wangsa Sailendra (Buddha)
+            },
+            {
+                soal: "Raja yang dianggap sebagai pendiri Wangsa Sanjaya di Mataram Kuno berdasarkan Prasasti Canggal (732 M) adalah...",
+                pilihan: ["Rakai Panangkaran", "Rakai Panunggalan", "Sanjaya", "Balitung", "Daksa"],
+                kunci: 2 // c) Sanjaya
+            },
+            {
+                soal: "Candi Buddha terbesar di dunia yang dibangun oleh Wangsa Sailendra pada masa kejayaan Mataram Kuno di Jawa Tengah adalah...",
+                pilihan: ["Candi Prambanan", "Candi Mendut", "Candi Sewu", "Candi Borobudur", "Candi Pawon"],
+                kunci: 3 // d) Candi Borobudur
+            },
+            {
+                soal: "Pada masa pemerintahan Rakai Pikatan (Wangsa Sanjaya) terjadi peristiwa penting, yaitu...",
+                pilihan: [
+                    "Pemindahan pusat kerajaan ke Jawa Timur",
+                    "Pernikahannya dengan Pramodawardhani (Sailendra) yang mempersatukan dua wangsa",
+                    "Pembangunan Candi Prambanan sebagai candi Hindu terbesar",
+                    "Serangan dari Kerajaan Sriwijaya",
+                    "Kematian raja terakhir Wangsa Sailendra"
+                ],
+                kunci: 1 // b) Pernikahannya dengan Pramodawardhani (Sailendra) yang mempersatukan dua wangsa
+            },
+            {
+                soal: "Salah satu faktor penyebab perpindahan pusat Kerajaan Mataram Kuno dari Jawa Tengah ke Jawa Timur pada abad ke-10 adalah...",
+                pilihan: [
+                    "Tekanan serangan dari Kerajaan Majapahit",
+                    "Letusan Gunung Merapi yang merusak wilayah pusat kerajaan",
+                    "Keinginan untuk menguasai jalur perdagangan laut",
+                    "Invasi dari Kerajaan Sriwijaya",
+                    "Kekeringan yang berkepanjangan di Jawa Tengah"
+                ],
+                kunci: 1 // b) Letusan Gunung Merapi yang merusak wilayah pusat kerajaan
+            },
+            {
+                soal: "Setelah pindah ke Jawa Timur, Mataram Kuno dipimpin oleh Wangsa Isyana. Raja pertama dari wangsa ini adalah...",
+                pilihan: [
+                    "Sri Isyana Wikramadharmatungga (Mpu Sindok)",
+                    "Dharmawangsa Teguh",
+                    "Airlangga",
+                    "Jayabhaya",
+                    "Kertanegara"
+                ],
+                kunci: 0 // a) Sri Isyana Wikramadharmatungga (Mpu Sindok)
+            },
+            {
+                soal: "Candi Prambanan yang dibangun pada masa Mataram Kuno merupakan candi Hindu yang dipersembahkan untuk Trimurti. Dewa utama yang ditempatkan di candi induk adalah...",
+                pilihan: ["Brahma", "Wisnu", "Siwa", "Ganesha", "Durga"],
+                kunci: 2 // c) Siwa
+            },
+            {
+                soal: "Prasasti Mantyasih (907 M) yang dikeluarkan oleh Raja Balitung memiliki arti penting karena...",
+                pilihan: [
+                    "Menceritakan kekalahan Wangsa Sailendra",
+                    "Memuat silsilah raja-raja Mataram Kuno mulai dari Sanjaya",
+                    "Menyebutkan pembangunan Candi Borobudur",
+                    "Menetapkan sistem pajak baru",
+                    "Menerangkan tentang perpindahan ibu kota ke Jawa Timur"
+                ],
+                kunci: 1 // b) Memuat silsilah raja-raja Mataram Kuno mulai dari Sanjaya
+            }
+        ];
+
+        // Variabel global
+        let jawabanSiswa = Array(15).fill(null);
+        let waktuMulai, timerInterval;
+        let waktuTotal = 15 * 60; // 15 menit = 900 detik
+        let waktuTersisa = waktuTotal;
+        let indeksSoalAktif = 0;
+        let statusJujur = true;
+        let logAktivitas = [];
+        let waktuPerSoal = Array(15).fill(0);
+        let waktuMulaiSoal;
+        let kecuranganTerjadi = false;
+
+        // DOM Elements
+        const tampilanAwal = document.getElementById('tampilan-awal');
+        const tampilanUjian = document.getElementById('tampilan-ujian');
+        const tampilanHasil = document.getElementById('tampilan-hasil');
+        const formDataDiri = document.getElementById('form-data-diri');
+        const namaInput = document.getElementById('nama');
+        const kelasSelect = document.getElementById('kelas');
+        const timerDisplay = document.getElementById('timer');
+        const namaTampilan = document.getElementById('nama-tampilan');
+        const kelasTampilan = document.getElementById('kelas-tampilan');
+        const daftarSoal = document.getElementById('daftar-soal');
+        const btnSebelumnya = document.getElementById('sebelumnya');
+        const btnSelanjutnya = document.getElementById('selanjutnya');
+        const btnKirimJawaban = document.getElementById('kirim-jawaban');
+        const statusJujurElement = document.getElementById('status-jujur');
+        const peringatanCurang = document.getElementById('peringatan-curang');
+        const modalPeringatan = document.getElementById('modal-peringatan');
+        const pesanPeringatan = document.getElementById('pesan-peringatan');
+        const tutupModalBtn = document.getElementById('tutup-modal');
+        const cetakHasilBtn = document.getElementById('cetak-hasil');
+        const watermark = document.getElementById('watermark');
+
+        // Fungsi untuk mengacak array
+        function acakArray(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        // Acak soal untuk setiap siswa
+        const soalAcak = acakArray(soalData.map((soal, index) => ({ ...soal, indexAsli: index })));
+
+        // Update soal terjawab
+        function updateSoalTerjawab() {
+            const terjawab = jawabanSiswa.filter(j => j !== null).length;
+            document.getElementById('terjawab').textContent = terjawab;
+        }
+
+        // Format waktu
+        function formatWaktu(detik) {
+            const menit = Math.floor(detik / 60);
+            const sisaDetik = detik % 60;
+            return `${menit.toString().padStart(2, '0')}:${sisaDetik.toString().padStart(2, '0')}`;
+        }
+
+        // Update timer
+        function updateTimer() {
+            if (waktuTersisa <= 0) {
+                clearInterval(timerInterval);
+                selesaiUjian();
+                return;
+            }
+            
+            waktuTersisa--;
+            timerDisplay.textContent = formatWaktu(waktuTersisa);
+            
+            if (waktuTersisa <= 60) {
+                timerDisplay.style.color = '#d32f2f';
+            }
+        }
+
+        // Tampilkan soal
+        function tampilkanSoal(indeks) {
+            daftarSoal.innerHTML = '';
+            indeksSoalAktif = indeks;
+            
+            // Update waktu soal sebelumnya
+            if (waktuMulaiSoal) {
+                const waktuSekarang = Date.now();
+                const waktuDiSoal = Math.floor((waktuSekarang - waktuMulaiSoal) / 1000);
+                waktuPerSoal[indeksSoalAktif] += waktuDiSoal;
+            }
+            
+            // Set waktu mulai soal baru
+            waktuMulaiSoal = Date.now();
+            
+            // Tampilkan soal
+            const soal = soalAcak[indeks];
+            const soalItem = document.createElement('div');
+            soalItem.className = 'soal-item';
+            soalItem.id = `soal-${indeks}`;
+            
+            let pilihanHTML = '';
+            soal.pilihan.forEach((pilihan, index) => {
+                const terpilih = jawabanSiswa[indeks] === index ? 'terpilih' : '';
+                pilihanHTML += `
+                <div class="pilihan">
+                    <label class="${terpilih}">
+                        <input type="radio" name="soal-${indeks}" value="${index}" ${jawabanSiswa[indeks] === index ? 'checked' : ''}>
+                        <span class="label-text">${String.fromCharCode(65 + index)}. ${pilihan}</span>
+                    </label>
+                </div>
+                `;
+            });
+            
+            soalItem.innerHTML = `
+                <h4>Soal ${indeks + 1}: ${soal.soal}</h4>
+                ${pilihanHTML}
+            `;
+            
+            daftarSoal.appendChild(soalItem);
+            
+            // Event listener untuk pilihan
+            const radioInputs = soalItem.querySelectorAll('input[type="radio"]');
+            radioInputs.forEach(input => {
+                input.addEventListener('change', function() {
+                    jawabanSiswa[indeks] = parseInt(this.value);
+                    updateSoalTerjawab();
+                    
+                    const semuaLabel = soalItem.querySelectorAll('label');
+                    semuaLabel.forEach(label => label.classList.remove('terpilih'));
+                    this.closest('label').classList.add('terpilih');
+                });
+            });
+            
+            // Update tombol navigasi
+            btnSebelumnya.disabled = indeks === 0;
+            btnSelanjutnya.disabled = indeks === soalAcak.length - 1;
+            
+            updateNavigasiSoal();
+        }
+
+        // Update navigasi soal
+        function updateNavigasiSoal() {
+            const navLama = document.querySelector('.nav-soal-indikator');
+            if (navLama) navLama.remove();
+            
+            const navContainer = document.createElement('div');
+            navContainer.className = 'nav-soal-indikator';
+            
+            soalAcak.forEach((soal, index) => {
+                const btnSoal = document.createElement('button');
+                btnSoal.textContent = index + 1;
+                btnSoal.className = 'btn-nomor-soal';
+                btnSoal.style.backgroundColor = jawabanSiswa[index] !== null ? '#4caf50' : 'white';
+                btnSoal.style.color = jawabanSiswa[index] !== null ? 'white' : '#333';
+                
+                if (index === indeksSoalAktif) {
+                    btnSoal.style.borderColor = '#1b5e20';
+                    btnSoal.style.transform = 'scale(1.1)';
+                }
+                
+                btnSoal.addEventListener('click', () => {
+                    tampilkanSoal(index);
+                });
+                
+                navContainer.appendChild(btnSoal);
+            });
+            
+            daftarSoal.parentNode.insertBefore(navContainer, daftarSoal.nextSibling);
+        }
+
+        // Deteksi kecurangan (termasuk screenshot)
+        function setupDeteksiKecurangan() {
+            // Sistem skor kecurigaan
+            let skorKecurigaan = 0;
+            const MAX_SKOR_KECURIGAAN = 15;
+            
+            // Variabel tracking
+            let orientationChangeCount = 0;
+            let resizeCount = 0;
+            let lastResizeTime = Date.now();
+            let hiddenTime = 0;
+            let visibilityChecks = 0;
+            
+            function tambahSkorKecurigaan(points, alasan) {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    skorKecurigaan += points;
+                    logAktivitas.push(`[SKOR +${points}] ${alasan} - Total: ${skorKecurigaan}`);
+                    
+                    if (skorKecurigaan >= MAX_SKOR_KECURIGAAN) {
+                        langsungSelesaikanKarenaCurang(`Skor kecurigaan mencapai ${skorKecurigaan}: ${alasan}`);
+                    } else if (skorKecurigaan >= MAX_SKOR_KECURIGAAN / 2) {
+                        tampilkanPeringatan(`⚠️ AKTIVITAS MENCURIGAKAN! Skor: ${skorKecurigaan}/${MAX_SKOR_KECURIGAAN}`);
+                    }
+                }
+            }
+            
+            // 1. Buat watermark dengan nama siswa (mencegah screenshot berguna)
+            const namaSiswa = namaInput.value;
+            const kelasSiswa = kelasSelect.value;
+            const watermarkText = `${namaSiswa} - ${kelasSiswa} - ULANGAN SEJARAH MATARAM KUNO`;
+            watermark.innerHTML = `
+                <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%) rotate(-45deg); font-size:30px; color:rgba(0,0,0,0.1); white-space:nowrap; font-weight:bold;">
+                    ${watermarkText}
+                </div>
+                <div style="position:absolute; top:20%; left:20%; transform:rotate(30deg); font-size:25px; color:rgba(0,0,0,0.08);">
+                    ${watermarkText}
+                </div>
+                <div style="position:absolute; bottom:20%; right:20%; transform:rotate(30deg); font-size:25px; color:rgba(0,0,0,0.08);">
+                    ${watermarkText}
+                </div>
+            `;
+            watermark.style.zIndex = '9999';
+            
+            // 2. Deteksi keluar dari tab/window
+            window.addEventListener('blur', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    tambahSkorKecurigaan(5, "Meninggalkan halaman ujian");
+                    logAktivitas.push(`Keluar dari halaman - ${new Date().toLocaleTimeString()}`);
+                    langsungSelesaikanKarenaCurang("Meninggalkan halaman ujian");
+                }
+            });
+            
+            // 3. Deteksi copy paste
+            document.addEventListener('copy', (e) => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    e.preventDefault();
+                    tambahSkorKecurigaan(4, "Mencoba copy");
+                    logAktivitas.push(`Mencoba menyalin - ${new Date().toLocaleTimeString()}`);
+                    langsungSelesaikanKarenaCurang("Mencoba menyalin (copy)");
+                }
+            });
+            
+            document.addEventListener('paste', (e) => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    e.preventDefault();
+                    tambahSkorKecurigaan(4, "Mencoba paste");
+                    logAktivitas.push(`Mencoba menempel - ${new Date().toLocaleTimeString()}`);
+                    langsungSelesaikanKarenaCurang("Mencoba menempel (paste)");
+                }
+            });
+            
+            // 4. Deteksi klik kanan
+            document.addEventListener('contextmenu', (e) => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    e.preventDefault();
+                    tambahSkorKecurigaan(1, "Klik kanan");
+                    logAktivitas.push(`Klik kanan diblokir - ${new Date().toLocaleTimeString()}`);
+                }
+            });
+            
+            // 5. Deteksi developer tools
+            document.addEventListener('keydown', (e) => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    // F12, Ctrl+Shift+I, Ctrl+Shift+J
+                    if (e.keyCode === 123 || 
+                        (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74))) {
+                        e.preventDefault();
+                        tambahSkorKecurigaan(5, "Developer tools");
+                        logAktivitas.push(`Mencoba developer tools - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Mencoba membuka developer tools");
+                    }
+                }
+            });
+            
+            // 6. Deteksi tombol screenshot (Desktop)
+            document.addEventListener('keydown', (e) => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    // PrintScreen
+                    if (e.key === 'PrintScreen' || e.keyCode === 44) {
+                        e.preventDefault();
+                        tambahSkorKecurigaan(5, "Tombol PrintScreen");
+                        logAktivitas.push(`Tombol PrintScreen ditekan - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Mencoba screenshot dengan PrintScreen");
+                    }
+                    
+                    // Ctrl/Cmd + Shift + S
+                    if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 's' || e.keyCode === 83)) {
+                        e.preventDefault();
+                        tambahSkorKecurigaan(5, "Ctrl+Shift+S");
+                        logAktivitas.push(`Ctrl+Shift+S ditekan - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Mencoba screenshot dengan Ctrl+Shift+S");
+                    }
+                    
+                    // Cmd + Shift + 3/4 (Mac)
+                    if (e.metaKey && e.shiftKey && (e.key === '3' || e.key === '4' || e.keyCode === 51 || e.keyCode === 52)) {
+                        e.preventDefault();
+                        tambahSkorKecurigaan(5, `Cmd+Shift+${e.key}`);
+                        logAktivitas.push(`Cmd+Shift+${e.key} ditekan - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang(`Mencoba screenshot dengan Cmd+Shift+${e.key}`);
+                    }
+                    
+                    // Ctrl + P (Print)
+                    if ((e.ctrlKey || e.metaKey) && e.key === 'p') {
+                        e.preventDefault();
+                        tambahSkorKecurigaan(3, "Ctrl+P (Print)");
+                        logAktivitas.push(`Ctrl+P ditekan - ${new Date().toLocaleTimeString()}`);
+                    }
+                }
+            });
+            
+            // 7. Deteksi orientasi layar (Mobile screenshot)
+            window.addEventListener('orientationchange', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    orientationChangeCount++;
+                    const orientation = window.orientation;
+                    logAktivitas.push(`Orientasi: ${orientation}° - ${new Date().toLocaleTimeString()}`);
+                    
+                    tambahSkorKecurigaan(1, `Perubahan orientasi ke ${orientation}°`);
+                    
+                    if (orientationChangeCount >= 3) {
+                        tambahSkorKecurigaan(3, `Perubahan orientasi berulang (${orientationChangeCount}x)`);
+                    }
+                }
+            });
+            
+            // 8. Deteksi resize window cepat
+            window.addEventListener('resize', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    const now = Date.now();
+                    const timeSinceLastResize = now - lastResizeTime;
+                    
+                    if (timeSinceLastResize < 100) {
+                        resizeCount++;
+                        logAktivitas.push(`Resize cepat: ${timeSinceLastResize}ms - ${new Date().toLocaleTimeString()}`);
+                        
+                        tambahSkorKecurigaan(1, "Resize cepat");
+                        
+                        if (resizeCount >= 3) {
+                            tambahSkorKecurigaan(3, `Resize cepat berulang (${resizeCount}x)`);
+                        }
+                    }
+                    
+                    lastResizeTime = now;
+                }
+            });
+            
+            // 9. Deteksi visibility change (mungkin notifikasi screenshot)
+            document.addEventListener('visibilitychange', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    if (document.hidden) {
+                        hiddenTime = Date.now();
+                        logAktivitas.push(`Halaman tersembunyi - ${new Date().toLocaleTimeString()}`);
+                        tambahSkorKecurigaan(2, "Halaman tersembunyi");
+                    } else {
+                        const timeHidden = Date.now() - hiddenTime;
+                        
+                        if (timeHidden > 50 && timeHidden < 500) {
+                            visibilityChecks++;
+                            logAktivitas.push(`Hidden ${timeHidden}ms - ${new Date().toLocaleTimeString()}`);
+                            
+                            tambahSkorKecurigaan(2, `Hidden ${timeHidden}ms`);
+                            
+                            if (visibilityChecks >= 2) {
+                                tambahSkorKecurigaan(3, `Pola hidden berulang (${visibilityChecks}x)`);
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // 10. Deteksi fullscreen exit
+            document.addEventListener('fullscreenchange', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    if (!document.fullscreenElement) {
+                        tambahSkorKecurigaan(5, "Keluar fullscreen");
+                        logAktivitas.push(`Keluar dari fullscreen - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Keluar dari mode fullscreen");
+                    }
+                }
+            });
+            
+            document.addEventListener('webkitfullscreenchange', () => {
+                if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                    if (!document.webkitFullscreenElement) {
+                        tambahSkorKecurigaan(5, "Keluar fullscreen");
+                        logAktivitas.push(`Keluar dari fullscreen (webkit) - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Keluar dari mode fullscreen");
+                    }
+                }
+            });
+            
+            // 11. Deteksi akses media devices
+            if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                const originalGetUserMedia = navigator.mediaDevices.getUserMedia;
+                
+                navigator.mediaDevices.getUserMedia = function(constraints) {
+                    if (tampilanUjian.style.display !== 'none' && !kecuranganTerjadi) {
+                        tambahSkorKecurigaan(10, "Akses kamera/mikrofon");
+                        logAktivitas.push(`Mencoba akses media devices - ${new Date().toLocaleTimeString()}`);
+                        langsungSelesaikanKarenaCurang("Mencoba mengakses kamera/mikrofon");
+                        return Promise.reject(new Error('Akses kamera/mikrofon diblokir selama ujian'));
+                    }
+                    return originalGetUserMedia.apply(this, arguments);
+                };
+            }
+            
+            logAktivitas.push(`Deteksi kecurangan aktif - ${new Date().toLocaleTimeString()}`);
+        }
+
+        // Langsung selesaikan karena curang
+        function langsungSelesaikanKarenaCurang(alasan) {
+            if (!kecuranganTerjadi) {
+                kecuranganTerjadi = true;
+                statusJujur = false;
+                statusJujurElement.style.display = 'none';
+                peringatanCurang.style.display = 'flex';
+                
+                logAktivitas.push(`KECURANGAN: ${alasan} - ${new Date().toLocaleTimeString()}`);
+                
+                clearInterval(timerInterval);
+                selesaiUjian();
+            }
+        }
+
+        // Tampilkan peringatan modal
+        function tampilkanPeringatan(pesan) {
+            pesanPeringatan.textContent = pesan;
+            modalPeringatan.style.display = 'flex';
+        }
+
+        // Selesaikan ujian
+        function selesaiUjian() {
+            clearInterval(timerInterval);
+            
+            const waktuSelesai = Date.now();
+            const waktuPengerjaanDetik = Math.floor((waktuSelesai - waktuMulai) / 1000);
+            const waktuPengerjaanFormat = formatWaktu(waktuPengerjaanDetik);
+            
+            let jawabanBenar = 0;
+            let jawabanSiswaArray = [];
+            
+            jawabanSiswa.forEach((jawaban, index) => {
+                const soal = soalAcak[index];
+                const benar = jawaban === soal.kunci;
+                if (benar) jawabanBenar++;
+                
+                jawabanSiswaArray.push({
+                    soal: index + 1,
+                    jawaban: jawaban !== null ? String.fromCharCode(65 + jawaban) : "Kosong"
+                });
+            });
+            
+            const nilai = Math.round((jawabanBenar / soalData.length) * 100);
+            
+            tampilkanHasil(nilai, jawabanBenar, waktuPengerjaanFormat, jawabanSiswaArray);
+            kirimKeGoogleSheets(nilai, jawabanBenar, waktuPengerjaanDetik, jawabanSiswaArray);
+        }
+
+        // Tampilkan hasil
+        function tampilkanHasil(nilai, jawabanBenar, waktuPengerjaan, jawabanSiswaArray) {
+            tampilanUjian.style.display = 'none';
+            tampilanHasil.style.display = 'block';
+            
+            document.getElementById('hasil-nama').textContent = namaInput.value;
+            document.getElementById('hasil-kelas').textContent = kelasSelect.value;
+            document.getElementById('hasil-waktu').textContent = waktuPengerjaan;
+            document.getElementById('hasil-status').textContent = statusJujur ? "Jujur" : "Curang";
+            document.getElementById('hasil-tanggal').textContent = new Date().toLocaleString();
+            
+            document.getElementById('nilai-angka').textContent = nilai;
+            
+            const laporanKeamanan = document.getElementById('laporan-keamanan');
+            if (statusJujur) {
+                laporanKeamanan.innerHTML = `
+                    <p><i class="fas fa-check-circle" style="color:#388e3c"></i> Tidak terdeteksi kecurangan</p>
+                    <p><i class="fas fa-shield-alt" style="color:#4caf50"></i> Siswa mengerjakan dengan jujur</p>
+                `;
+            } else {
+                laporanKeamanan.innerHTML = `
+                    <p><i class="fas fa-exclamation-triangle" style="color:#d32f2f"></i> <strong>TERDETEKSI KECURANGAN!</strong></p>
+                    <p><i class="fas fa-times-circle" style="color:#d32f2f"></i> Ujian diakhiri otomatis</p>
+                    <p><i class="fas fa-user-slash" style="color:#d32f2f"></i> Status: TIDAK JUJUR</p>
+                `;
+            }
+            
+            // Hapus watermark di hasil
+            watermark.innerHTML = '';
+            watermark.style.zIndex = '-1';
+        }
+
+        // Kirim data ke Google Sheets
+        function kirimKeGoogleSheets(nilai, jawabanBenar, waktuDetik, jawabanSiswaArray) {
+            const data = {
+                nama: namaInput.value,
+                kelas: kelasSelect.value,
+                nilai: nilai,
+                jawabanBenar: jawabanBenar,
+                jawabanSalah: soalData.length - jawabanBenar,
+                waktuPengerjaan: waktuDetik,
+                status: statusJujur ? "Jujur" : "Curang",
+                logAktivitas: logAktivitas.join(" | "),
+                waktuPerSoal: waktuPerSoal.join(","),
+                jawabanSiswa: JSON.stringify(jawabanSiswaArray),
+                timestamp: new Date().toLocaleString()
+            };
+            
+            // ===========================================
+            // GANTI URL DI BAWAH INI DENGAN URL APPS SCRIPT ANDA!
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxhfu3rgtv_Qp7SRS5M_ei6NbRODl3J8BgS_ndQTb1JP9wC-9aoIeWEfr6aUFC3EMPj6Q/exec";
+            // ===========================================
+            
+            const formData = new FormData();
+            for (const key in data) {
+                formData.append(key, data[key]);
+            }
+            
+            fetch(scriptURL, {
+                method: 'POST',
+                body: formData
+            }).then(() => {
+                console.log("✅ Data berhasil dikirim ke Google Sheets");
+            }).catch(error => {
+                console.error("❌ Error mengirim data:", error);
+            });
+        }
+
+        // Event Listeners
+        formDataDiri.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            if (!namaInput.value.trim() || !kelasSelect.value) {
+                tampilkanPeringatan("Harap isi nama dan pilih kelas terlebih dahulu!");
+                return;
+            }
+            
+            waktuMulai = Date.now();
+            waktuTersisa = waktuTotal;
+            
+            namaTampilan.textContent = namaInput.value;
+            kelasTampilan.textContent = kelasSelect.value;
+            
+            setupDeteksiKecurangan();
+            
+            timerInterval = setInterval(updateTimer, 1000);
+            
+            tampilkanSoal(0);
+            updateSoalTerjawab();
+            
+            tampilanAwal.style.display = 'none';
+            tampilanUjian.style.display = 'block';
+            
+            document.documentElement.requestFullscreen().catch(err => {
+                console.log("Fullscreen error: ", err);
+            });
+            
+            logAktivitas.push(`Ujian dimulai - ${new Date().toLocaleTimeString()}`);
+        });
+
+        btnSebelumnya.addEventListener('click', () => {
+            if (indeksSoalAktif > 0) {
+                tampilkanSoal(indeksSoalAktif - 1);
+            }
+        });
+
+        btnSelanjutnya.addEventListener('click', () => {
+            if (indeksSoalAktif < soalAcak.length - 1) {
+                tampilkanSoal(indeksSoalAktif + 1);
+            }
+        });
+
+        btnKirimJawaban.addEventListener('click', () => {
+            const terjawab = jawabanSiswa.filter(j => j !== null).length;
+            
+            if (terjawab < soalData.length) {
+                if (!confirm(`Anda baru menjawab ${terjawab} dari ${soalData.length} soal. Yakin ingin mengirim?`)) {
+                    return;
+                }
+            }
+            
+            selesaiUjian();
+        });
+
+        tutupModalBtn.addEventListener('click', () => {
+            modalPeringatan.style.display = 'none';
+        });
+
+        cetakHasilBtn.addEventListener('click', () => {
+            window.print();
+        });
+
+        document.getElementById('tutup-hasil').addEventListener('click', () => {
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            }
+            
+            alert("Terima kasih telah mengerjakan ulangan.");
+        });
+
+        // Blokir keluar dari halaman
+        window.addEventListener('beforeunload', (e) => {
+            if (tampilanUjian.style.display !== 'none') {
+                e.preventDefault();
+                e.returnValue = 'Jika keluar, ujian akan diakhiri otomatis!';
+            }
+        });
+
+        // Inisialisasi
+        updateSoalTerjawab();
+    </script>
+</body>
+</html>
