@@ -256,7 +256,7 @@
         .peringatan-waktu {
             margin-top: 5px;
             color: #d32f2f;
-            font-size: px;
+            font-size: 13px;
             font-weight: 500;
         }
         
@@ -582,7 +582,7 @@
     <div id="tampilan-awal" class="container">
         <div class="header">
             <div class="logo-container">
-                <img id="logo-sekolah" src="logo.png" alt="Logo Sekolah">
+                <img id="logo-sekolah" src="https://via.placeholder.com/120x120/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
             </div>
             <h1>SMA NEGERI 5 TANAH PUTIH</h1>
             <h2>KABUPATEN ROKAN HILIR</h2>
@@ -600,7 +600,7 @@
                     <li><i class="fas fa-ban"></i> DILARANG mencontek atau membuka aplikasi lain</li>
                     <li><i class="fas fa-ban"></i> DILARANG menyalin (copy-paste) soal atau jawaban</li>
                     <li><i class="fas fa-ban"></i> DILARANG screenshot atau merekam layar</li>
-                    <li><i class="fas fa-clock"></i> Waktu pengerjaan: 13 menit 45 detik</li>
+                    <li><i class="fas fa-clock"></i> Waktu pengerjaan: 15 menit 00 detik</li>
                     <li><i class="fas fa-exclamation-triangle"></i> Kecurangan akan mengakhiri ujian otomatis tanpa kompensasi</li>
                 </ul>
             </div>
@@ -649,7 +649,7 @@
         <div class="header-ujian">
             <div class="info-siswa">
                 <div class="logo-small">
-                    <img src="logo.png" alt="Logo Sekolah">
+                    <img src="https://via.placeholder.com/50x50/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
                 </div>
                 <div>
                     <h4 id="nama-tampilan"></h4>
@@ -715,7 +715,7 @@
     <div id="tampilan-hasil" class="container" style="display:none;">
         <div class="header">
             <div class="logo-container">
-                <img src="logo.png" alt="Logo Sekolah">
+                <img src="https://via.placeholder.com/120x120/1b5e20/ffffff?text=LOGO" alt="Logo Sekolah">
             </div>
             <h1>SMA NEGERI 5 TANAH PUTIH</h1>
             <h2>KABUPATEN ROKAN HILIR</h2>
@@ -935,7 +935,7 @@
         // Variabel global
         let jawabanSiswa = Array(15).fill(null);
         let waktuMulai, timerInterval;
-        let waktuTotal = 13 * 60+45; // 13 menit 45 detik = 825 detik
+        let waktuTotal = 15 * 60; // 15 menit = 900 detik
         let waktuTersisa = waktuTotal;
         let indeksSoalAktif = 0;
         let statusJujur = true;
@@ -1358,23 +1358,30 @@
             const waktuPengerjaanFormat = formatWaktu(waktuPengerjaanDetik);
             
             let jawabanBenar = 0;
+            let jawabanSalah = 0;
             let jawabanSiswaArray = [];
             
             jawabanSiswa.forEach((jawaban, index) => {
                 const soal = soalAcak[index];
                 const benar = jawaban === soal.kunci;
-                if (benar) jawabanBenar++;
+                if (benar) {
+                    jawabanBenar++;
+                } else if (jawaban !== null) {
+                    jawabanSalah++;
+                }
                 
                 jawabanSiswaArray.push({
                     soal: index + 1,
-                    jawaban: jawaban !== null ? String.fromCharCode(65 + jawaban) : "Kosong"
+                    jawaban: jawaban !== null ? String.fromCharCode(65 + jawaban) : "Kosong",
+                    kunci: String.fromCharCode(65 + soal.kunci),
+                    benar: benar
                 });
             });
             
             const nilai = Math.round((jawabanBenar / soalData.length) * 100);
             
             tampilkanHasil(nilai, jawabanBenar, waktuPengerjaanFormat, jawabanSiswaArray);
-            kirimKeGoogleSheets(nilai, jawabanBenar, waktuPengerjaanDetik, jawabanSiswaArray);
+            kirimKeGoogleSheets(nilai, jawabanBenar, jawabanSalah, waktuPengerjaanDetik, jawabanSiswaArray);
         }
 
         // Tampilkan hasil
@@ -1410,13 +1417,13 @@
         }
 
         // Kirim data ke Google Sheets
-        function kirimKeGoogleSheets(nilai, jawabanBenar, waktuDetik, jawabanSiswaArray) {
+        function kirimKeGoogleSheets(nilai, jawabanBenar, jawabanSalah, waktuDetik, jawabanSiswaArray) {
             const data = {
                 nama: namaInput.value,
                 kelas: kelasSelect.value,
                 nilai: nilai,
                 jawabanBenar: jawabanBenar,
-                jawabanSalah: soalData.length - jawabanBenar,
+                jawabanSalah: jawabanSalah,
                 waktuPengerjaan: waktuDetik,
                 status: statusJujur ? "Jujur" : "Curang",
                 logAktivitas: logAktivitas.join(" | "),
@@ -1427,7 +1434,8 @@
             
             // ===========================================
             // GANTI URL DI BAWAH INI DENGAN URL APPS SCRIPT ANDA!
-            const scriptURL = "https://script.google.com/macros/s/AKfycbyPeixPIxtW5R_RYOyoOb8Hvt6P905cowtPZrFH7VvRpFGl_RKtoiyBmsfxDiqhXK2Tng/exec";
+            // Contoh: "https://script.google.com/macros/s/AKfycbyourcode/exec"
+            const scriptURL = "https://script.google.com/macros/s/AKfycbycKzXRdQ2jXl_AIRwT03f1f737qFmTYeZnuDsX3zkpIj9whzOCtgnFdyZt-NncBwvasg/exec";
             // ===========================================
             
             const formData = new FormData();
@@ -1438,10 +1446,14 @@
             fetch(scriptURL, {
                 method: 'POST',
                 body: formData
-            }).then(() => {
-                console.log("✅ Data berhasil dikirim ke Google Sheets");
-            }).catch(error => {
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log("✅ Data berhasil dikirim:", result);
+            })
+            .catch(error => {
                 console.error("❌ Error mengirim data:", error);
+                // Tetap tampilkan hasil ke siswa meskipun gagal kirim
             });
         }
 
@@ -1470,9 +1482,12 @@
             tampilanAwal.style.display = 'none';
             tampilanUjian.style.display = 'block';
             
-            document.documentElement.requestFullscreen().catch(err => {
-                console.log("Fullscreen error: ", err);
-            });
+            // Request fullscreen
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log("Fullscreen error: ", err);
+                });
+            }
             
             logAktivitas.push(`Ujian dimulai - ${new Date().toLocaleTimeString()}`);
         });
@@ -1514,7 +1529,7 @@
                 document.exitFullscreen();
             }
             
-            alert("Terima kasih telah mengerjakan ulangan.");
+            alert("Terima kasih telah mengerjakan ulangan. Nilai Anda sudah tersimpan.");
         });
 
         // Blokir keluar dari halaman
@@ -1529,7 +1544,4 @@
         updateSoalTerjawab();
     </script>
 </body>
-
 </html>
-
-
